@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_background_rounded"
+    android:elevation="3dp"
+    android:layout_margin="5dp"
+    android:paddingBottom="5dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:weightSum="1"
+        >
+        <TextView
+            android:id="@+id/tv_grid_title"
+            android:layout_weight="0.9"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="# Trending"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/wet_blue"
+            android:gravity="center|start"
+            />
+        <Button
+            android:id="@+id/grid_btn_viewAll"
+            android:layout_weight="0.1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="View All"
+            android:textSize="12sp"
+            android:backgroundTint="@color/red_200"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <GridLayout
+            android:id="@+id/grid_product_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            >
+            <include layout="@layout/horizontal_scroll_item_layout" android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+              />
+            <include layout="@layout/horizontal_scroll_item_layout" android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+            <include layout="@layout/horizontal_scroll_item_layout" android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+            <include layout="@layout/horizontal_scroll_item_layout" android:layout_columnWeight="1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
+
+        </GridLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"
+            android:background="?attr/dividerHorizontal"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerVertical="true"
+            android:rotation="90"
+            android:background="?attr/dividerHorizontal"/>
+
+
+
+    </RelativeLayout>
+</LinearLayout>

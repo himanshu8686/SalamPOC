@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="3dp"
+    android:layout_margin="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- wrap 1-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            >
+            <!-- left warp -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_weight="2">
+                <ImageView
+                    android:id="@+id/iv_row_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:src="@drawable/oneplus"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+            <!-- right warp -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingVertical="5dp"
+                android:layout_weight="8">
+                <TextView
+                    android:id="@+id/tv_row_product_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Google Pixel XL 2 (Mirror Black,128 GB)"
+                    android:textColor="@color/wet_blue"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_row_product_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="SD 875"
+                    android:textColor="#00C853"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_row_product_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="Rs 59999"
+                    android:textColor="@color/wet_blue"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

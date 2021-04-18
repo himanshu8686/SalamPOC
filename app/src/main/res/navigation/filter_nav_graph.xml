@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/filter_nav_graph"
+    app:startDestination="@id/filterTitleFragment">
+    <fragment
+        android:id="@+id/filterTitleFragment"
+        android:name="com.salampoc.ui.filter.FilterTitleFragment"
+        android:label="Filter title"
+        tools:layout="@layout/fragment_filter_title" >
+        <action
+            android:id="@+id/action_filterTitleFragment_to_filterValueFragment"
+            app:destination="@id/filterValueFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/filterValueFragment"
+        android:name="com.salampoc.ui.filter.FilterValueFragment"
+        android:label="Filter Value"
+        tools:layout="@layout/fragment_filter_value" />
+</navigation>

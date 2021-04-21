@@ -1,0 +1,78 @@
+[
+  {
+    "filterId": "B1",
+    "typeId": "1",
+    "filterTitle": "Brand",
+    "type": "CheckBox",
+    "items": [
+      {
+        "filterId": "B1",
+        "value": "Peter England"
+      },
+      {
+        "filterId": "B1",
+        "value": "H & M"
+      },
+      {
+        "filterId": "B1",
+        "value": "Ucb"
+      },
+      {
+        "filterId": "B1",
+        "value": "Raymond"
+      },
+      {
+        "filterId": "B1",
+        "value": "Gucci"
+      },
+      {
+        "filterId": "B1",
+        "value": "Zara"
+      }
+    ]
+  },
+  {
+    "filterId": "C1",
+    "typeId": "1",
+    "filterTitle": "Color",
+    "type": "CheckBox",
+    "items": [
+      {
+        "filterId": "C1",
+        "value": "Black"
+      },
+      {
+        "filterId": "C1",
+        "value": "Red"
+      },
+      {
+        "filterId": "C1",
+        "value": "White"
+      },
+      {
+        "filterId": "C1",
+        "value": "Green"
+      },
+      {
+        "filterId": "C1",
+        "value": "Blue"
+      }
+    ]
+  },
+  {
+    "filterId": "R1",
+    "typeId": "2",
+    "filterTitle": "Reversible",
+    "type": "RadioButton",
+    "items": [
+      {
+        "filterId": "R1",
+        "value": "Yes"
+      },
+      {
+        "filterId": "R1",
+        "value": "No"
+      }
+    ]
+  }
+]

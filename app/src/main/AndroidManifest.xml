@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SalamPOC">
-        <activity android:name=".ui.filter.FilterActivity"></activity>
+        <activity android:name=".ui.productdetails.ProductDetailsActivity"></activity>
+        <activity android:name=".ui.filter.FilterActivity" />
         <activity android:name=".ViewAllActivity" />
         <activity android:name=".SharingActivity" />
         <activity

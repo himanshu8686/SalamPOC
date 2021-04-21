@@ -8,12 +8,10 @@
     android:id="@+id/ftl"
     tools:context=".ui.filter.FilterTitleFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:id="@+id/tv_filter_title"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="filter fragment" />
+ <androidx.recyclerview.widget.RecyclerView
+     android:id="@+id/rv_filter_title"
+     android:layout_width="match_parent"
+     tools:listitem="@layout/filter_title_item_layout"
+     android:layout_height="match_parent"/>
 
 </LinearLayout>

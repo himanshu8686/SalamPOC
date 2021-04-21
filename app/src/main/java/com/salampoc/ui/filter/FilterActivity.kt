@@ -2,7 +2,9 @@ package com.salampoc.ui.filter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
@@ -16,6 +18,14 @@ import com.salampoc.R
 class FilterActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
+    private lateinit var btn_apply:Button
+
+    companion object{
+        var filteredList :MutableList<FilterModel.FilterModelItem.Item>  = ArrayList()
+        lateinit var selectedFilterModelItem :FilterModel.FilterModelItem
+
+        lateinit var filterModel: FilterModel
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,6 +69,18 @@ class FilterActivity : AppCompatActivity() {
 
         }
 
+
+        btn_apply = findViewById(R.id.btn_apply)
+        btn_apply.setOnClickListener {
+            Log.d("TAG","selected Object is"+ selectedFilterModelItem.toString())
+        }
+
+
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        filteredList.clear()
     }
 
 

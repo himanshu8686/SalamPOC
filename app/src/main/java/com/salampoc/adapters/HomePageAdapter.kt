@@ -13,6 +13,7 @@ import com.salampoc.R
 import com.salampoc.ViewAllActivity
 import com.salampoc.models.HomePageModel
 import com.salampoc.models.HorizontalProductScrollModel
+import com.salampoc.ui.productdetails.ProductDetailsActivity
 
 /**
  * Project Name :SalamPOC
@@ -166,9 +167,13 @@ class HomePageAdapter(
                     )
                 )
 
+                val horizontalProductScrollModel =horizontalProductScrollModelList[index]
+
                 // add click  listener to product
                 grid_product_layout.getChildAt(index).setOnClickListener{
-                    Toast.makeText(itemView.context, "index"+index, Toast.LENGTH_SHORT).show()
+                    val productDetailsIntent = Intent(itemView.context, ProductDetailsActivity::class.java)
+                    productDetailsIntent.putExtra("PROD_DETAILS",horizontalProductScrollModel)
+                    itemView.context.startActivity(productDetailsIntent)
                 }
 
             }

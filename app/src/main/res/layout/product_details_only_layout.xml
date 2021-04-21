@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/ll_product_details_only_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:elevation="3dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_title_details_only"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/wet_blue"
+        android:padding="16dp"
+        android:text="Product Details"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_body_details_only"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Donec vestibulum metus leo, sit amet facilisis sem porttitor quis. Duis convallis mauris euismod diam rutrum, et pretium ante efficitur. Nulla tincidunt lectus quis rutrum consequat. Pellentesque vitae tincidunt turpis.
+Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut placerat, massa eget efficitur condimentum, dui libero aliquet metus, a dictum lectus lacus ut sem. Vivamus ultrices aliquam lorem at egestas."
+        android:textColor="@color/material_black" />
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.salampoc.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.salampoc.R
 import com.salampoc.models.HorizontalProductScrollModel
+import com.salampoc.ui.productdetails.ProductDetailsActivity
 
 /**
  * Project Name :SalamPOC
@@ -30,12 +32,13 @@ class HorizontalProductScrollAdapter(
     }
 
     override fun onBindViewHolder(holder: HorizontalProductViewHolder, position: Int) {
+        var horizontalProductScrollModel = horizontalProductScrollModelList.get(position)
         val imageResource = horizontalProductScrollModelList[position].productImage
         val productTitle = horizontalProductScrollModelList[position].productTitle
         val productDescription = horizontalProductScrollModelList[position].productDescription
         val productPrice = horizontalProductScrollModelList[position].productPrice
 
-        holder.setData(imageResource,productTitle,productDescription,productPrice,position)
+        holder.setData(imageResource,productTitle,productDescription,productPrice,position,horizontalProductScrollModel)
     }
 
     override fun getItemCount(): Int {
@@ -56,7 +59,8 @@ class HorizontalProductScrollAdapter(
             productTitle: String?,
             productDescription: String?,
             productPrice: String?,
-            position: Int
+            position: Int,
+            horizontalProductScrollModel: HorizontalProductScrollModel
         ) {
             imageResource?.let {
                 iv_product.setImageResource(it) }
@@ -73,6 +77,9 @@ class HorizontalProductScrollAdapter(
 
             itemView.setOnClickListener{
                 Toast.makeText(itemView.context, "index "+position, Toast.LENGTH_SHORT).show()
+                val productDetailsIntent = Intent(itemView.context,ProductDetailsActivity::class.java)
+                productDetailsIntent.putExtra("PROD_DETAILS",horizontalProductScrollModel)
+                itemView.context.startActivity(productDetailsIntent)
             }
 
         }

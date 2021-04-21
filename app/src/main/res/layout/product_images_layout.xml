@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:elevation="3dp">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/product_images_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="250dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_wish_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:backgroundTint="@color/white"
+        android:clickable="true"
+        android:src="@drawable/ic_menu_wishlist"
+        android:tint="@color/light_grey"
+        app:rippleColor="@color/material_yellow" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/viewpager_indicator_tablayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/product_images_view_pager"
+        android:layout_centerHorizontal="true"
+        app:tabBackground="@drawable/dot_selctor"
+        app:tabIndicatorHeight="0dp"
+        app:tabRippleColor="@null" />
+
+    <TextView
+        android:id="@+id/tv_product_details_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewpager_indicator_tablayout"
+        android:paddingHorizontal="20dp"
+        android:text="Product Title"
+        android:textColor="@color/material_black"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_product_details_title"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/white_background_rounded"
+        android:backgroundTint="@color/material_blue"
+        android:orientation="horizontal"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="2dp">
+
+        <TextView
+            android:id="@+id/tv_rating_mini"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="5dp"
+            android:text="4.5"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_rating_count_mini"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_product_details_title"
+        android:layout_toRightOf="@+id/ll_star"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="2dp"
+        android:text="(8,540) rating"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/tv_product_details_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_star"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="2dp"
+        android:text="Rs. 4999"
+        android:textColor="@color/material_black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_product_details_price_cut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_star"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_toRightOf="@id/tv_product_details_price"
+        android:background="@drawable/striked_line"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="2dp"
+        android:text="Rs.4500"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

@@ -22,6 +22,14 @@
     <fragment
         android:id="@+id/filterValueFragment"
         android:name="com.salampoc.ui.filter.FilterValueFragment"
-        android:label="Filter Value"
-        tools:layout="@layout/fragment_filter_value" />
+        android:label="{filterTitle}"
+        tools:layout="@layout/fragment_filter_value" >
+        <argument
+            android:name="currentFilterItem"
+            app:argType="com.salampoc.ui.filter.FilterModel$FilterModelItem" />
+        <argument
+            android:name="filterTitle"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatCheckBox
+import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.salampoc.R
@@ -27,11 +28,6 @@ class FilterValueFragment : Fragment() {
 
     private lateinit var filterModelItem: FilterModel.FilterModelItem
 
-    companion object {
-        const val MY_PREFERENCES="MyPref"
-    }
-
-
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
@@ -41,7 +37,6 @@ class FilterValueFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_filter_value, container, false)
         filter_value_container = view.findViewById(R.id.filter_value_container)
-        sharedPreferences = requireActivity().getSharedPreferences(MY_PREFERENCES,Context.MODE_PRIVATE)
         return view
     }
 
@@ -76,9 +71,28 @@ class FilterValueFragment : Fragment() {
                 inflateValuesWithCheckBox(type, typeId, filterItemList, title)
             }
             "RadioButton" -> {
-                // inflateValuesWithRadioButton(type, typeId, filterItemList)
+                 inflateValuesWithRadioButton(type, typeId, filterItemList)
             }
         }
+    }
+
+    private fun inflateValuesWithRadioButton(type: String, typeId: String?, filterItemList: List<FilterModel.FilterModelItem.Item>) {
+        val radioGroup = RadioGroup(activity)
+        radioGroup.orientation = RadioGroup.VERTICAL
+
+
+        // populating answer list with checkbox and text
+        for (index in filterItemList.indices) {
+            var filterRadioButton = AppCompatRadioButton(requireActivity())
+            filterRadioButton.id=index
+            filterRadioButton.text = filterItemList.get(index).value
+            radioGroup.addView(filterRadioButton)
+            //TODO OnClickListener of checkBox
+            filterRadioButton.setOnClickListener {
+                Toast.makeText(activity, ""+filterRadioButton.text+filterRadioButton.id, Toast.LENGTH_SHORT).show()
+            }
+        }
+        filter_value_container.addView(radioGroup)
     }
 
     private fun loadChecked(){
@@ -102,12 +116,17 @@ class FilterValueFragment : Fragment() {
             var checkBox = activity?.let { AppCompatCheckBox(it) }
             checkBox?.id = index
             checkBox?.text = filterItemList[index].value
-           // check_container.addView(checkBox)
             // setting click listener here
             checkBox?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
                 override fun onCheckedChanged(compoundButton: CompoundButton?, isChecked: Boolean) {
                     if (isChecked) {
-                        Toast.makeText(activity, ""+checkBox.text+checkBox.id, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            activity,
+                            "" + checkBox.text + checkBox.id,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        Toast.makeText(activity, "unchecked "+checkBox.text, Toast.LENGTH_SHORT).show()
                     }
                 }
 

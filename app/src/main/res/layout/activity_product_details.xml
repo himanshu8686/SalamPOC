@@ -30,8 +30,9 @@
             android:background="@color/white"
             android:orientation="vertical">
             <include layout="@layout/product_images_layout"/>
-            <include layout="@layout/product_details_description_tab_layout"/>
             <include layout="@layout/product_details_only_layout"/>
+            <include layout="@layout/product_details_description_tab_layout"/>
+
 
         </LinearLayout>
 

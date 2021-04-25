@@ -21,7 +21,7 @@ class FilterActivity : AppCompatActivity() {
     private lateinit var btn_apply:Button
 
     companion object{
-        var filteredList :MutableList<FilterModel.FilterModelItem.Item>  = ArrayList()
+        var filteredList :MutableList<NewFilterModel.FilterModelItem.Item>  = ArrayList()
         lateinit var selectedFilterModelItem :FilterModel.FilterModelItem
 
         lateinit var filterModel: FilterModel
@@ -72,7 +72,7 @@ class FilterActivity : AppCompatActivity() {
 
         btn_apply = findViewById(R.id.btn_apply)
         btn_apply.setOnClickListener {
-            Log.d("TAG","selected Object is"+ selectedFilterModelItem.toString())
+            Log.d("TAG","selected Object is"+ filteredList.toString())
         }
 
 

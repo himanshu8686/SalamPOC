@@ -1,6 +1,7 @@
 package com.salampoc.ui.filter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,13 +42,14 @@ class FilterTitleFragment : Fragment() {
 
 
         val gson = Gson()
-        val listUserType: Type = object : TypeToken<MutableList<FilterModel.FilterModelItem?>?>() {}.type
+        val listUserType: Type = object : TypeToken<MutableList<NewFilterModel.FilterModelItem?>?>() {}.type
 
-        val filterList: MutableList<FilterModel.FilterModelItem> = gson.fromJson(jsonString, listUserType)
+        val filterList: MutableList<NewFilterModel.FilterModelItem> = gson.fromJson(jsonString, listUserType)
 
-//        for (i in filterList.indices) {
-//            Log.d("TAG", filterList[i].toString())
-//        }
+
+        for (i in filterList.indices) {
+            Log.d("TAG", filterList[i].toString())
+        }
         /// setting recycler view for filter title
 
         val layoutManager = LinearLayoutManager(requireContext())

@@ -22,13 +22,11 @@ import com.salampoc.R
 class FilterValueFragment : Fragment() {
 
     private val args: FilterValueFragmentArgs by navArgs()
-    private lateinit var filterItemList: List<FilterModel.FilterModelItem.Item>
+    private lateinit var filterItemList: List<NewFilterModel.FilterModelItem.Item>
 
     private lateinit var filter_value_container: LinearLayout
 
-    private lateinit var filterModelItem: FilterModel.FilterModelItem
-
-    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var filterModelItem: NewFilterModel.FilterModelItem
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,8 +49,8 @@ class FilterValueFragment : Fragment() {
         inflateLayout(filterModelItem)
     }
 
-    private fun inflateLayout(filterModelItem: FilterModel.FilterModelItem) {
-        filterItemList = filterModelItem.items as List<FilterModel.FilterModelItem.Item>
+    private fun inflateLayout(filterModelItem: NewFilterModel.FilterModelItem) {
+        filterItemList = filterModelItem.items as List<NewFilterModel.FilterModelItem.Item>
         val type = filterModelItem.type
         val typeId = filterModelItem.typeId
         val title = filterModelItem.filterTitle
@@ -63,7 +61,7 @@ class FilterValueFragment : Fragment() {
     private fun inflateFilterValues(
         type: String?,
         typeId: String?,
-        filterItemList: List<FilterModel.FilterModelItem.Item>,
+        filterItemList: List<NewFilterModel.FilterModelItem.Item>,
         title: String?
     ) {
         when (type) {
@@ -71,12 +69,16 @@ class FilterValueFragment : Fragment() {
                 inflateValuesWithCheckBox(type, typeId, filterItemList, title)
             }
             "RadioButton" -> {
-                 inflateValuesWithRadioButton(type, typeId, filterItemList)
+                inflateValuesWithRadioButton(type, typeId, filterItemList)
             }
         }
     }
 
-    private fun inflateValuesWithRadioButton(type: String, typeId: String?, filterItemList: List<FilterModel.FilterModelItem.Item>) {
+    private fun inflateValuesWithRadioButton(
+        type: String,
+        typeId: String?,
+        filterItemList: List<NewFilterModel.FilterModelItem.Item>
+    ) {
         val radioGroup = RadioGroup(activity)
         radioGroup.orientation = RadioGroup.VERTICAL
 
@@ -84,69 +86,99 @@ class FilterValueFragment : Fragment() {
         // populating answer list with checkbox and text
         for (index in filterItemList.indices) {
             var filterRadioButton = AppCompatRadioButton(requireActivity())
-            filterRadioButton.id=index
+            filterRadioButton.id = index
             filterRadioButton.text = filterItemList.get(index).value
             radioGroup.addView(filterRadioButton)
-            //TODO OnClickListener of checkBox
-            filterRadioButton.setOnClickListener {
-                Toast.makeText(activity, ""+filterRadioButton.text+filterRadioButton.id, Toast.LENGTH_SHORT).show()
-            }
+            filterRadioButton?.isChecked = isValuePresent(filterItemList[index])
+            // OnClickListener of checkBox
+            filterRadioButton.setOnCheckedChangeListener(object :
+                CompoundButton.OnCheckedChangeListener {
+                override fun onCheckedChanged(p0: CompoundButton?, isChecked: Boolean) {
+                    if (isChecked) {
+                        Toast.makeText(activity, "check "+filterRadioButton.text, Toast.LENGTH_SHORT).show()
+                        FilterActivity.filteredList.add(
+                            NewFilterModel.FilterModelItem.Item(
+                                filterItemList.get(index).filterParameterId,
+                                filterItemList.get(index).filterValueId,
+                                null,
+                                null,
+                                filterItemList.get(index).value
+                            )
+                        )
+                    }else{
+                        FilterActivity.filteredList.remove(
+                            NewFilterModel.FilterModelItem.Item(
+                                filterItemList.get(index).filterParameterId,
+                                filterItemList.get(index).filterValueId,
+                                null,
+                                null,
+                                filterItemList.get(index).value
+                            )
+                        )
+                    }
+                }
+
+            })
+
         }
         filter_value_container.addView(radioGroup)
-    }
-
-    private fun loadChecked(){
-
     }
 
     private fun inflateValuesWithCheckBox(
         type: String,
         typeId: String?,
-        filterItemList: List<FilterModel.FilterModelItem.Item>,
+        filterItemList: List<NewFilterModel.FilterModelItem.Item>,
         title: String?
     ) {
         // Layout where you want to dynamically load checkboxes
-        //TODO: load checkedList
-        loadChecked()
+        // populating checkbox lis
 
-        // populating checkbox list
-        var index: Int = 0
-        while (index < filterItemList.size) {
+        for (index in filterItemList.indices) {
             // do something
             var checkBox = activity?.let { AppCompatCheckBox(it) }
             checkBox?.id = index
             checkBox?.text = filterItemList[index].value
+
+            //check
+            checkBox?.isChecked = isValuePresent(filterItemList[index])
+
             // setting click listener here
             checkBox?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
                 override fun onCheckedChanged(compoundButton: CompoundButton?, isChecked: Boolean) {
                     if (isChecked) {
-                        Toast.makeText(
-                            activity,
-                            "" + checkBox.text + checkBox.id,
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        FilterActivity.filteredList.add(
+                            NewFilterModel.FilterModelItem.Item(
+                                filterItemList.get(index).filterParameterId,
+                                filterItemList.get(index).filterValueId,
+                                null,
+                                null,
+                                filterItemList.get(index).value
+                            )
+                        )
+
                     } else {
-                        Toast.makeText(activity, "unchecked "+checkBox.text, Toast.LENGTH_SHORT).show()
+                        FilterActivity.filteredList.remove(
+                            NewFilterModel.FilterModelItem.Item(
+                                filterItemList.get(index).filterParameterId,
+                                filterItemList.get(index).filterValueId,
+                                null,
+                                null,
+                                filterItemList.get(index).value
+                            )
+                        )
                     }
                 }
 
             })
             filter_value_container.addView(checkBox)
-            index++
         }
-
     }
 
+    //////////////////////////////////////////
+    fun isValuePresent(item: NewFilterModel.FilterModelItem.Item): Boolean {
+        if (FilterActivity.filteredList.size > 0) {
+            return FilterActivity.filteredList.contains(item)
+        }
+        return false
+    }
 }
-//
-//if (FilterActivity.filteredList.size > 0) {
-//    //checkig
-//
-//    for (i in 0..filterItemList.size-1) {
-//        for (j in 0..FilterActivity.filteredList.size-1) {
-//            if (filterItemList[i].value == FilterActivity.filteredList[j].value){
-//                Log.d("TAG","==>"+filterItemList[i].value)
-//            }
-//        }
-//    }
-//}

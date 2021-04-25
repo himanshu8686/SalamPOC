@@ -5,11 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.salampoc.R
+import java.lang.StringBuilder
 
 /**
  * Project Name :SalamPOC
@@ -18,7 +20,7 @@ import com.salampoc.R
  */
 class FilterTitleAdapter(
     private val requireContext: Context,
-    private val filterList: MutableList<FilterModel.FilterModelItem>
+    private val filterList: MutableList<NewFilterModel.FilterModelItem>
 ) : RecyclerView.Adapter<FilterTitleAdapter.TitleViewHolder>() {
 
 
@@ -45,20 +47,34 @@ class FilterTitleAdapter(
 
     class TitleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val filterTitle: TextView = itemView.findViewById(R.id.tv_filter_title)
+        private val tv_selected_values :TextView= itemView.findViewById(R.id.tv_selected_values)
 
         fun setData(
-            filterModelItem: FilterModel.FilterModelItem,
+            filterModelItem: NewFilterModel.FilterModelItem,
             filterTitle: String,
             position: Int
         ) {
             this.filterTitle.text = filterTitle
+            if( FilterActivity.filteredList.size > 0){
+                val selectedValues = FilterActivity.filteredList.filter {
+                    item -> item.filterParameterId!!.equals(filterModelItem.filterParameterId)
+                }
+                var list :MutableList<String> = ArrayList()
+                for (i in selectedValues.indices){
+                    selectedValues.get(i).value?.let { list.add(it) }
+                }
+
+                tv_selected_values.text =  list.joinToString(separator = ",")
+
+            }
 
             itemView.setOnClickListener {
                 //Log.d("TAG", filterModelItem.toString())
                 //switch to value fragment with object
 
                 val action =
-                    FilterTitleFragmentDirections.actionFilterTitleFragmentToFilterValueFragment(filterModelItem,filterTitle = filterTitle)
+                    FilterTitleFragmentDirections.actionFilterTitleFragmentToFilterValueFragment(filterModelItem,
+                        filterTitle = filterTitle)
                 itemView.findNavController().navigate(action)
             }
         }

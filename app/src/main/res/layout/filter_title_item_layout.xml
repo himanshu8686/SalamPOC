@@ -10,18 +10,39 @@
     android:elevation="3dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_filter_title"
+    <LinearLayout
+        android:id="@+id/ll_filter_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Brand"
-        android:textSize="14sp"
-        android:lines="2"
-        android:padding="2dp"
-        android:maxLines="2"
-        android:ellipsize="end"
-        android:gravity="start|center"
-        android:textColor="@color/black"
-        app:drawableTint="@color/black"
-        app:drawableEndCompat="@drawable/ic_chevron_right" />
+        android:weightSum="10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_filter_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            tools:text="Brand"
+            android:textSize="14sp"
+            android:paddingVertical="10dp"
+            android:ellipsize="end"
+            android:gravity="start|center"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_selected_values"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"
+            tools:text="(Black,Bag)"
+            android:textSize="14sp"
+            android:paddingVertical="10dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:textColor="@color/light_grey"
+            app:drawableTint="@color/black"
+            app:drawableEndCompat="@drawable/ic_chevron_right"
+            />
+
+    </LinearLayout>
 </LinearLayout>

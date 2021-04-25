@@ -26,7 +26,7 @@
         tools:layout="@layout/fragment_filter_value" >
         <argument
             android:name="currentFilterItem"
-            app:argType="com.salampoc.ui.filter.FilterModel$FilterModelItem" />
+            app:argType="com.salampoc.ui.filter.NewFilterModel$FilterModelItem" />
         <argument
             android:name="filterTitle"
             app:argType="string"

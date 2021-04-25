@@ -1,77 +1,143 @@
 [
   {
-    "filterId": "B1",
+    "filterParameterId": "A101",
+    "typeId": "1",
+    "filterTitle": "Category",
+    "type": "CheckBox",
+    "items": [
+      {
+        "filterParameterId": "A101",
+        "filterValueId": "AA101",
+        "value": "Bags"
+      },
+      {
+        "filterParameterId": "A101",
+        "filterValueId": "AA102",
+        "value": "Accessories"
+      },
+      {
+        "filterParameterId": "A101",
+        "filterValueId": "AA103",
+        "value": "Clothing"
+      },
+      {
+        "filterParameterId": "A101",
+        "filterValueId": "AA104",
+        "value": "Swimware"
+      },
+      {
+        "filterParameterId": "A101",
+        "filterValueId": "AA105",
+        "value": "Shoes"
+      },
+      {
+        "filterParameterId": "A101",
+        "filterValueId": "AA106",
+        "value": "Binoculars"
+      }
+    ]
+  },
+  {
+    "filterParameterId": "B101",
     "typeId": "1",
     "filterTitle": "Brand",
     "type": "CheckBox",
     "items": [
       {
-        "filterId": "B1",
+        "filterParameterId": "B101",
+        "filterValueId": "BB101",
         "value": "Peter England"
       },
       {
-        "filterId": "B1",
+        "filterParameterId": "B101",
+        "filterValueId": "BB102",
         "value": "H & M"
       },
       {
-        "filterId": "B1",
+        "filterParameterId": "B101",
+        "filterValueId": "BB103",
         "value": "Ucb"
       },
       {
-        "filterId": "B1",
+        "filterParameterId": "B101",
+        "filterValueId": "BB104",
         "value": "Raymond"
       },
       {
-        "filterId": "B1",
+        "filterParameterId": "B101",
+        "filterValueId": "BB105",
         "value": "Gucci"
       },
       {
-        "filterId": "B1",
+        "filterParameterId": "B101",
+        "filterValueId": "BB106",
         "value": "Zara"
       }
     ]
   },
   {
-    "filterId": "C1",
-    "typeId": "1",
+    "filterParameterId": "C101",
+    "typeId": "2",
     "filterTitle": "Color",
-    "type": "CheckBox",
+    "type": "RadioButton",
     "items": [
       {
-        "filterId": "C1",
+        "filterParameterId": "C101",
+        "filterValueId": "CC101",
         "value": "Black"
       },
       {
-        "filterId": "C1",
+        "filterParameterId": "C101",
+        "filterValueId": "CC102",
         "value": "Red"
       },
       {
-        "filterId": "C1",
+        "filterParameterId": "C101",
+        "filterValueId": "CC103",
         "value": "White"
       },
       {
-        "filterId": "C1",
+        "filterParameterId": "C101",
+        "filterValueId": "CC104",
         "value": "Green"
       },
       {
-        "filterId": "C1",
+        "filterParameterId": "C101",
+        "filterValueId": "CC105",
         "value": "Blue"
       }
     ]
   },
   {
-    "filterId": "R1",
+    "filterParameterId": "R101",
     "typeId": "2",
     "filterTitle": "Reversible",
     "type": "RadioButton",
     "items": [
       {
-        "filterId": "R1",
+        "filterParameterId": "R101",
+        "filterValueId": "RR101",
         "value": "Yes"
       },
       {
-        "filterId": "R1",
+        "filterParameterId": "R101",
+        "filterValueId": "RR102",
         "value": "No"
+      }
+    ]
+  },
+  {
+    "filterParameterId": "S101",
+    "typeId": "3",
+    "filterTitle": "Price",
+    "type": "Slider",
+    "items": [
+      {
+        "filterParameterId": "S101",
+        "filterValueId": "SS105",
+        "value": "200",
+        "minValue": "100",
+        "maxValue": "1250"
       }
     ]
   }
